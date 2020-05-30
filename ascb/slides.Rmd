@@ -57,7 +57,140 @@ More information can be found [here](https://creativecommons.org/licenses/by-sa/
 
 ---
 
+class: center middle
 
+<table align = "center">
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#7b7043")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#7b7043")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#7b7043")`] </td>
+
+
+</tr>
+
+<tr>
+
+</tr>
+
+</table>
+
+---
+
+class: center middle
+
+<table align = "center">
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#7b7043")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#7b7043")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#7b7043")`] </td>
+
+
+</tr>
+
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#7b7043")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#7b7043")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#CAC5B3")`] </td>
+
+
+</tr>
+
+
+
+</table>
+
+---
+
+class: center middle
+
+<table align = "center">
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#7b7043")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#7b7043")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#7b7043")`] </td>
+
+
+</tr>
+
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#7b7043")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#7b7043")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#CAC5B3")`] </td>
+
+
+</tr>
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#7b7043")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#CAC5B3")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#CAC5B3")`] </td>
+
+
+</tr>
+
+
+</table>
+
+---
+
+class: center middle
+
+<table align = "center">
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#7b7043")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#7b7043")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#7b7043")`] </td>
+
+
+</tr>
+
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#7b7043")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#7b7043")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#CAC5B3")`] </td>
+
+
+</tr>
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#7b7043")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#CAC5B3")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#CAC5B3")`] </td>
+
+
+</tr>
+
+<tr style="font-size:28px">
+
+<td> .large[`r fontawesome::fa(name = "r-project", fill = "#CAC5B3")`]</td>
+<td> .large[`r fontawesome::fa(name = "chart-line", fill = "#CAC5B3")`] </td>
+<td> .large[`r fontawesome::fa(name = "chalkboard-teacher", fill = "#CAC5B3")`] </td>
+
+
+</tr>
+
+
+
+</table>
+
+
+---
 ## A ggplot
 
 ```{r echo = FALSE, fig.align='center'}
