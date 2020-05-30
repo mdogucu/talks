@@ -1,0 +1,916 @@
+---
+title: "Introduction to ggplot as an entry way to R for beginners"
+subtitle: "Teaching Tomorrow’s Scientists: <br>An ASCB Virtual Meeting"
+author: "Mine Dogucu"
+date: "2020-05-30"
+output:
+  xaringan::moon_reader:
+    css: slide-styles.css
+    lib_dir: libs
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>`
+---
+
+layout: true
+
+<!-- This file by Mine Dogucu is licensed under a  Attribution-ShareAlike 2.5 Generic License (CC BY-SA 2.5) More information about the license can be found at https://creativecommons.org/licenses/by-sa/2.5/ -->
+  
+<div class="my-header"></div>
+
+<div class="my-footer"> 
+ CC BY-SA <a href="https://mdogucu.ics.uci.edu">Mine Dogucu</a></div> 
+
+---
+class: center, middle
+
+
+```{r message = FALSE, echo = FALSE, warning = FALSE, message=FALSE}
+library(tidyverse)
+library(emojifont)
+library(openintro)
+theme_set(theme_gray(base_size = 22))
+
+births <- births %>% 
+  mutate(smoke = case_when(smoke == "nonsmoker" ~ "non-smoker mother",
+                           smoke == "smoker" ~ "smoker mother")) %>% 
+  mutate(smoke = as.factor(smoke))
+```
+
+
+## License
+
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('img/cc-sa.png')
+```
+
+
+More information can be found [here](https://creativecommons.org/licenses/by-sa/2.5/)
+
+
+---
+
+
+## A ggplot
+
+```{r echo = FALSE, fig.align='center'}
+ggplot(births) +
+  aes(x = smoke,
+      y = weight) +
+  geom_boxplot(color = "purple") +
+  labs(x = "",
+    y = "Birth Weight of the Baby") 
+  
+```
+
+.footnote[Note: the boxes are intentionally purple]
+---
+
+## Background
+
+- `ggplot`'s gg stands for Grammar of Graphics.
+
+--
+
+- Grammar of Graphics is a book by Leland Wilkenson.
+
+--
+
+- The ggplot2 is an R package written by Hadley Wickham.
+
+---
+
+class: center middle
+
+
+## First Week Goals
+
+
+
+<table align = "center">
+
+<tr style="font-size:28px">
+
+<td> .large[Prerequisite <br>Knowledge <br> `r fontawesome::fa(name = "undo", fill = "#7b7043")`]</td>
+<td> .large[Access <br>R <br> `r fontawesome::fa(name = "laptop", fill = "#7b7043")`]</td>
+<td> .large[Visualize <br>Data <br> `r fontawesome::fa(name = "chart-line", fill = "#7b7043")`] </td>
+
+
+</tr>
+
+</table>
+
+
+---
+
+## Prerequisite Knowledge 
+
+- Data Matrix
+- Cases / Observations (Rows)
+- Variables (Columns)
+- Numeric vs. Categorical Variables 
+- Plot Types (histogram, bar plot, scatter plot etc.)
+
+
+
+
+
+---
+
+```{r}
+births
+```
+
+
+---
+
+```{r}
+glimpse(births)
+```
+
+
+
+---
+
+If you wanted to make the following plot and R could understand English what would you tell R? Decide with your neighbor(s).
+
+```{r echo = FALSE, fig.height=6, fig.width=9, fig.align='center'}
+ggplot(births) +
+  aes(x = smoke) +
+  geom_bar() 
+
+```
+
+---
+## Three Steps of Making a basic ggplot
+
+- Make space for a plot using the dataset. 
+
+--
+
+- Decide on what goes on the axes.
+
+--
+
+- Decide what kind of a plot.
+
+---
+
+## Step 1 - Make space for the plot
+
+.left-panel[
+```{r eval = FALSE}
+ggplot(births)
+```
+]
+.right-panel[
+
+```{r echo = FALSE, fig.height=6, fig.width=9}
+ggplot(births)
+
+```
+]
+
+---
+
+## Step 2 - Decide on variables and their axes
+
+.left-panel[
+```{r eval = FALSE}
+ggplot(births) +
+  aes(x = smoke)
+```
+]
+.right-panel[
+
+```{r echo = FALSE, fig.height=6, fig.width=9}
+ggplot(births) +
+  aes(x = smoke)
+
+```
+]
+
+---
+
+## Step 3 - Decide on the type of plot
+
+.left-panel[
+```{r eval = FALSE}
+ggplot(births) +
+  aes(x = smoke) +
+  geom_bar() 
+```
+]
+.right-panel[
+
+```{r echo = FALSE, fig.height=6, fig.width=9}
+ggplot(births) +
+  aes(x = smoke) +
+  geom_bar() 
+
+```
+]
+
+
+---
+
+## Example
+
+```{r echo = FALSE, fig.height=6, fig.width=9, fig.align='center', message = FALSE}
+ggplot(births) +
+  aes(x = weight) +
+  geom_histogram() 
+
+```
+
+
+---
+
+## Example
+
+.left-panel[
+```{r eval = FALSE}
+ggplot(births) +
+  aes(x = weight) +
+  geom_histogram() 
+```
+]
+.right-panel[
+
+```{r echo = FALSE, fig.height=6, fig.width=9, message=FALSE}
+ggplot(births) +
+  aes(x = weight) +
+  geom_histogram() 
+
+```
+]
+
+---
+
+## geom_bar()
+
+.left-panel[
+<table>
+  <tr>
+    <th>x</th>
+    <th>y</th>
+  </tr>
+  
+   <tr> 
+    <td> categorical </td>
+    <td> &emsp; &emsp; </td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+```{r fig.height=6, fig.width=9, eval = FALSE}
+ggplot(births) +
+  aes(x = smoke) +
+  geom_bar() 
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9}
+ggplot(births) +
+  aes(x = smoke) +
+  geom_bar() 
+
+```
+
+]
+---
+
+## geom_histogram()
+
+.left-panel[
+<table>
+  <tr>
+    <th>x</th>
+    <th>y</th>
+  </tr>
+  
+   <tr> 
+    <td> numeric </td>
+    <td> &emsp; &emsp;</td>
+    </td>
+  </tr>
+</table>
+
+<br> 
+<br>
+
+```{r eval = FALSE, fig.height=6, fig.width=9, warning = FALSE, message = FALSE}
+ggplot(births) +
+  aes(x = weight) +
+  geom_histogram() 
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9, warning = FALSE, message = FALSE}
+ggplot(births) +
+  aes(x = weight) +
+  geom_histogram() 
+
+```
+
+]
+
+---
+
+
+## geom_boxplot()
+
+.left-panel[
+<table>
+  <tr>
+    <th>x</th>
+    <th>y</th>
+  </tr>
+  
+   <tr> 
+    <td> categorical </td>
+    <td> numeric </td>
+    </td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+```{r eval = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = smoke, 
+      y = weight) +
+  geom_boxplot() 
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = smoke, 
+      y = weight) +
+  geom_boxplot() 
+```
+
+]
+
+---
+
+## geom_point()
+
+.left-panel[
+<table>
+  <tr>
+    <th>x</th>
+    <th>y</th>
+  </tr>
+  
+   <tr> 
+    <td> numeric </td>
+    <td> numeric </td>
+    </td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+```{r eval = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point() 
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point() 
+
+```
+
+]
+
+
+
+---
+
+class: middle center
+
+You can add layers on top of   
+layers on top of  
+layers on top of   
+layers...
+
+---
+
+## geom_point() and geom_smooth()
+
+.left-panel[
+<table>
+  <tr>
+    <th>x</th>
+    <th>y</th>
+  </tr>
+  
+   <tr> 
+    <td> numeric </td>
+    <td> numeric </td>
+    </td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+```{r eval = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point()  +
+  geom_smooth()
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point()  +
+  geom_smooth()
+
+```
+
+]
+
+
+---
+
+## geom_point() and geom_smooth()
+
+.left-panel[
+<table>
+  <tr>
+    <th>x</th>
+    <th>y</th>
+  </tr>
+  
+   <tr> 
+    <td> numeric </td>
+    <td> numeric </td>
+    </td>
+  </tr>
+</table>
+
+We can set the smoothing method to be _lm_ (linear model).
+
+```{r eval = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point()  +
+  geom_smooth(method = "lm")
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point()  +
+  geom_smooth(method = "lm")
+
+```
+
+]
+
+---
+
+## geom_point() and geom_smooth()
+
+.left-panel[
+<table>
+  <tr>
+    <th>x</th>
+    <th>y</th>
+  </tr>
+  
+   <tr> 
+    <td> numeric </td>
+    <td> numeric </td>
+    </td>
+  </tr>
+</table>
+
+
+We can set _se_ (standard error) to FALSE
+
+```{r eval = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point() +
+  geom_smooth(method = "lm", 
+              se = FALSE)
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point() +
+  geom_smooth(method = "lm", 
+              se = FALSE)
+
+```
+
+]
+
+
+---
+class: center middle 
+
+## Colors
+
+.large[
+`r emoji(search_emoji('rainbow'))[1]`
+] 
+
+Pick your favorite color(s) from the list at:
+
+[bit.ly/colors-r](http:/bit.ly/colors-r)
+
+---
+
+# color = ?
+
+.left-panel[
+
+
+```{r fig.height=6, fig.width=9, eval = FALSE}
+ggplot(births) +
+  aes(x = smoke) +
+  geom_bar(color = 'cyan') 
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9}
+ggplot(births) +
+  aes(x = smoke) +
+  geom_bar(color = 'cyan') 
+```
+
+]
+
+---
+
+# fill = ?
+
+.left-panel[
+
+
+```{r fig.height=6, fig.width=9, eval = FALSE}
+ggplot(births) +
+  aes(x = smoke) +
+  geom_bar(color = 'cyan',
+           fill = 'coral') 
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9}
+ggplot(births) +
+  aes(x = smoke) +
+  geom_bar(color = 'cyan',
+           fill = 'coral') 
+```
+
+]
+
+---
+
+# fill = ?
+
+.left-panel[
+
+The fill argument can also be used for a variable. Note that this time fill is inside the `aes` function with the other variable. The colors are set by default.
+
+```{r fig.height=6, fig.width=9, eval = FALSE}
+
+ggplot(births) +
+  aes(x = smoke, 
+      fill = premature) +
+  geom_bar()
+
+```
+
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9}
+
+ggplot(births) +
+  aes(x = smoke, 
+      fill = premature) +
+  geom_bar() 
+```
+
+]
+
+
+---
+
+#labs
+
+.left-panel[
+
+```{r fig.height=6, fig.width=9, eval = FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point() +
+  labs(x = "Weight Gained by the Mother",
+       y = "Birth Weight of the Baby",
+       title = "Relationship between Mother's and Baby's Weight",
+       caption = "Based on a random sample of 100 births in North Carolina") 
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9, warning = FALSE}
+ggplot(births) +
+  aes(x = gained, 
+      y = weight) +
+  geom_point() +
+  labs(x = "Weight Gained by the Mother",
+       y = "Birth Weight of the Baby",
+       title = "Relationship between Mother's and Baby's Weight",
+       caption = "Based on a random sample of 100 births in North Carolina") 
+```
+
+]
+
+
+
+---
+
+## Plot Types
+
+<table align="center">
+
+<th> Variable 1</th>
+<th> Variable 2</th>
+<th> Type of Plot</th>
+<th> Geom object</th>
+
+<tr> 
+<td>Categorical</td>
+<td> </td>
+<td>Bar plot</td>
+<td>geom_bar() </td>
+</tr>
+
+
+<tr> 
+<td>Numeric</td>
+<td> </td>
+<td>Histogram </td>
+<td>geom_histogram() </td>
+</tr>
+
+<tr> 
+<td>Numeric</td>
+<td> </td>
+<td>Dot plot </td>
+<td>geom_dotplot()</td>
+</tr>
+
+<tr> 
+<td>Numeric</td>
+<td> </td>
+<td>Box plot </td>
+<td> geom_boxplot()</td>
+</tr>
+
+<tr> 
+<td>Categorical</td>
+<td>Categorical </td>
+<td>Stacked bar plot</td>
+<td>geom_bar() </td>
+
+</tr>
+
+<tr> 
+<td>Categorical</td>
+<td>Numeric </td>
+<td>Side-by-side box plot</td>
+<td> geom_boxplot()</td>
+
+</tr>
+
+<tr> 
+<td>Numeric</td>
+<td>Numeric </td>
+<td>Scatter plot</td>
+<td> geom_point()</td>
+
+</tr>
+
+</table>
+
+.footnote[Box plot for a single variable is slightly more difficult for beginners.]
+
+
+---
+
+
+## Why start with ggplot?
+
+- "A picture is worth a thousand words" 
+
+--
+
+- For beginners, making visuals is more interesting  than calculating the median, interquartile range on a calculator.
+
+--
+
+- There is always a learning curve for learning R, however starting with ggplot makes that curve less steep.
+
+--
+- ggplot is widely used including by [BBC](https://bbc.github.io/rcookbook/), [fivethirtyeight](https://rdrr.io/cran/ggthemes/man/theme_fivethirtyeight.html), and [Associated Press](https://github.com/associatedpress/apstyle).
+
+---
+
+## A note on teaching ggplot
+
+.left-panel[
+
+```{r eval = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births, aes(x = smoke, 
+                   y = weight)) +
+  geom_boxplot() 
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births, aes(x = smoke, y = weight)) +
+  geom_boxplot() 
+```
+
+]
+
+
+---
+
+## A note on teaching ggplot
+
+.left-panel[
+
+```{r eval = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births) +
+  geom_boxplot(aes(x = smoke, 
+                   y = weight)) 
+
+```
+
+]
+
+.right-panel[
+```{r echo = FALSE, fig.height=6, fig.width=9, warning = FALSE, message=FALSE}
+ggplot(births, aes(x = smoke, y = weight)) +
+  geom_boxplot(aes(x = smoke, 
+                   y = weight)) 
+```
+
+]
+
+---
+
+class: center middle
+
+
+## First Week Goals
+
+
+
+<table align = "center">
+
+<tr style="font-size:28px">
+
+<td> .large[Prerequisite <br>Knowledge <br> `r fontawesome::fa(name = "undo", fill = "#7b7043")`]</td>
+<td> .large[Access <br>R <br> `r fontawesome::fa(name = "laptop", fill = "#7b7043")`]</td>
+<td> .large[Visualize <br>Data <br> `r fontawesome::fa(name = "chart-line", fill = "#7b7043")`] </td>
+
+
+</tr>
+
+</table>
+
+---
+
+## Accessing R (Three Ways)
+
+Local installation `r fontawesome::fa(name = "laptop", fill = "#7b7043")`  
+[Download R](https://mirror.las.iastate.edu/CRAN/)  
+[Download RStudio](https://rstudio.com/products/rstudio/download/)   
+Download ggplot2 and other required packages (e.g. `install.packages(ggplot2)`)
+<hr>
+
+Local Server `r fontawesome::fa(name = "server", fill = "#7b7043")`  
+Requires IT support  
+IT can do the downloads for the students.
+<hr>
+
+RStudio Cloud `r fontawesome::fa(name = "cloud", fill = "#7b7043")`  
+You download the packages.   
+You have access to students work.  
+Will not be free for teaching classes starting in Fall 2020
+
+---
+
+class: center middle
+
+Live Demo
+
+.large[`r fontawesome::fa(name = "link", fill = "#7b7043")` [bit.ly/acsb-project](https://bit.ly/acsb-project)]
+
+---
+
+## Teaching Tips
+
+- If you start with R Markdown as opposed to R files, that will be there "normal" for the learner. 
+--
+
+- Since there is a lot to learn all at once, avoid using a dataset that requires additional learning (e.g. cell biology)
+--
+
+- Teach `aes()` where you think it makes the most sense.
+--
+
+- Introduce colors (has a magical effect on the learner!)
+
+---
+
+
+class: middle
+
+## Resources (All Open-Access)
+
+- [OpenIntro Statistics Textbook](https://www.openintro.org/) for introducing students to data summaries and different types of plots (not necessarily using R)
+
+- [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#coordinate-systems) 
+
+- [RStudio Cheat Sheets](https://rstudio.com/resources/cheatsheets/)
+
+---
+class: center middle 
+
+`r fontawesome::fa(name = "envelope", fill = "#7b7043")` mdogucu@uci.edu
+`r fontawesome::fa(name = "twitter", fill = "#7b7043")` MineDogucu
+`r fontawesome::fa(name = "github", fill = "#7b7043")` mdogucu
+
+

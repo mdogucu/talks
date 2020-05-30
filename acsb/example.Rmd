@@ -1,0 +1,36 @@
+---
+title: "Introduction to ggplot as an entry way to R for beginners"
+author: "Mine Dogucu"
+output: html_document
+---
+
+## Step 1 - Loading the Required Packages
+
+```{r message = FALSE}
+library(ggplot2)
+library(openintro)
+```
+
+
+## Step 2 - Loading the Data
+
+```{r}
+data(births)
+```
+
+## Step 3 - Visualizing
+
+```{r}
+ggplot(births) +
+  aes(x = smoke,
+      y = weight) +
+  geom_boxplot(color = "purple") +
+  labs(x = "",
+    y = "Birth Weight of the Baby") 
+```
+
+
+
+## Make your own Visual
+
+There are many other datasets in the [openintro](https://cran.r-project.org/web/packages/openintro/openintro.pdf) package. You can try to visualize any of these dataset you would like. You may consider `hsb2` for instance.
