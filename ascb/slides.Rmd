@@ -1048,5 +1048,6 @@ class: center middle
 `r fontawesome::fa(name = "envelope", fill = "#7b7043")` mdogucu@uci.edu
 `r fontawesome::fa(name = "twitter", fill = "#7b7043")` MineDogucu
 `r fontawesome::fa(name = "github", fill = "#7b7043")` mdogucu
+`r fontawesome::fa(name = "link", fill = "#7b7043")`[bit.ly/ascb-ggplot](https://bit.ly/ascb-ggplot)
 
 
