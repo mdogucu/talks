@@ -1012,7 +1012,7 @@ class: center middle
 
 Live Demo
 
-.large[`r fontawesome::fa(name = "link", fill = "#7b7043")` [bit.ly/acsb-project](https://bit.ly/acsb-project)]
+.large[`r fontawesome::fa(name = "link", fill = "#7b7043")` [bit.ly/ascb-project](https://bit.ly/ascb-project)]
 
 ---
 
