@@ -5,10 +5,13 @@
   background-color: #b0a160	;
 }
 
-.title-slide h1,   {
+.title-slide h1 {
   color: #434e52;
 }
 
+.title-slide a {
+  color: #434e52;
+}
 
 .title-slide h2, .title-slide h3{
   color: #434e52;

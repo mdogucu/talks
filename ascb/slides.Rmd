@@ -2,7 +2,7 @@
 title: "Introduction to ggplot as an entry way to R for beginners"
 subtitle: "Teaching Tomorrow’s Scientists: <br>An ASCB Virtual Meeting"
 author: "Mine Dogucu"
-date: "2020-05-30"
+date: "2020-05-30 <br><br> `r emo::ji('link')`[bit.ly/ascb-ggplot](https://bit.ly/ascb-ggplot)"
 output:
   xaringan::moon_reader:
     css: slide-styles.css
