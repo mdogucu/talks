@@ -9,6 +9,7 @@ output: html_document
 ```{r message = FALSE}
 library(ggplot2)
 library(openintro)
+library(tibble)
 ```
 
 
@@ -17,6 +18,14 @@ library(openintro)
 ```{r}
 data(births)
 ```
+
+
+## Step 3 - Getting to Know the Data
+
+```{r}
+glimpse(births)
+```
+
 
 ## Step 3 - Visualizing
 
@@ -28,7 +37,6 @@ ggplot(births) +
   labs(x = "",
     y = "Birth Weight of the Baby") 
 ```
-
 
 
 ## Make your own Visual
