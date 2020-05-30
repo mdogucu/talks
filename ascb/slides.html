@@ -643,8 +643,8 @@ ggplot(births) +
 
 ```r
 ggplot(births) +
-  aes(x = gained, 
-      y = weight) +
+  aes(x = weight, 
+      y = gained) +
   geom_point() 
 ```
 
@@ -690,8 +690,8 @@ layers...
 
 ```r
 ggplot(births) +
-  aes(x = gained, 
-      y = weight) +
+  aes(x = weight, 
+      y = gained) +
   geom_point()  +
   geom_smooth()
 ```
@@ -727,9 +727,9 @@ We can set the smoothing method to be _lm_ (linear model).
 
 ```r
 ggplot(births) +
-  aes(x = gained, 
-      y = weight) +
-  geom_point()  +
+  aes(x = weight, 
+      y = gained) +
+  geom_point()   +
   geom_smooth(method = "lm")
 ```
 
@@ -764,9 +764,9 @@ We can set _se_ (standard error) to FALSE
 
 ```r
 ggplot(births) +
-  aes(x = gained, 
-      y = weight) +
-  geom_point() +
+  aes(x = weight, 
+      y = gained) +
+  geom_point()  +
   geom_smooth(method = "lm", 
               se = FALSE)
 ```
@@ -869,11 +869,11 @@ ggplot(births) +
 
 ```r
 ggplot(births) +
-  aes(x = gained, 
-      y = weight) +
+  aes(x = weight, 
+      y = gained) +
   geom_point() +
-  labs(x = "Weight Gained by the Mother",
-       y = "Birth Weight of the Baby",
+  labs(x = "Birth Weight of the Baby",
+       y = "Weight Gained by the Mother",
        title = "Relationship between Mother's and Baby's Weight",
        caption = "Based on a random sample of 100 births in North Carolina") 
 ```
